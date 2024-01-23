@@ -1,0 +1,91 @@
+    {% extends "base.html" %}
+
+    {% block content %}
+    <div class="content">
+        <form class="d-flex mx-auto search-menu" method="POST" action="{{ url_for('search_movie') }}">
+            <input class="form-control form-control-sm" name="movie-tv" type="search" placeholder="Search for a Movie" aria-label="Search" style="width: 600px;">
+            <button class="btn search-button" type="submit">Search</button>
+        </form>
+        <h2 class="or-text">OR</h2>
+        <form class="d-flex mx-auto search-menu" method="POST" action="{{ url_for('search_movie_actor') }}">
+            <input class="form-control form-control-sm" name="actor-name" type="search" placeholder="Actor Name for a Movie" aria-label="Search" style="width: 600px;">
+            <button class="btn search-button" type="submit">Search</button>
+        </form>
+
+            <div class="filters">
+                <h3 class="filters-text">Search Based On:</h3>
+                <div class="row">
+                    <div class="col">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="genresDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Genres
+                            </button>
+                            <form action="/genre-search" class="filters-menu" method="POST">
+                                <ul class="dropdown-menu" aria-labelledby="genresDropdown">
+                                    <form action="/genre-search" class="filters-menu" method="GET">
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Action') }}">Action</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Adventure') }}">Adventure</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Animation') }}">Animation</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Crime') }}">Crime</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Comedy') }}">Comedy</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Documentary') }}">Documentary</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Drama') }}">Drama</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Family') }}">Family</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Drama') }}">Drama</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Fantasy') }}">Fantasy</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='History') }}">History</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Horror') }}">Horror</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Music') }}">Music</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Mystery') }}">Mystery</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Romance') }}">Romance</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Science Fiction') }}">Science Fiction</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Thriller') }}">Thriller</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='War') }}">War</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Western') }}">Western</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('genre_search', genre='Sport') }}">Sport</a></li>
+                                    </form>
+                                    <!-- Add more genre options here -->
+                                </ul>
+                            </form>
+                            
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="yearsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Years
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="yearsDropdown">
+                                <form action="{{ url_for('year_search') }}" class="filters-menu" method="GET">
+                                    {% for year in range(2023, 2000, -1) %}
+                                        <li><a class="dropdown-item" href="{{ url_for('year_search', year=year) }}">{{ year }}</a></li>
+                                    {% endfor %}
+                                </form>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="reviewsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                Reviews
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="reviewsDropdown">
+                                <li><a class="dropdown-item" href="#">Positive</a></li>
+                                <li><a class="dropdown-item" href="#">Neutral</a></li>
+                                <!-- Add more review options here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    {% endblock %}
+    <!-- <form method="POST" action="{{ url_for('search') }}">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.movie_title.label(class="movie_title", style="width: 600px;") }}
+            {{ form.movie_title(class="form-control", id="movie-title") }}
+        </div><br>
+        <button>Search Movie</button>
+    </form> -->

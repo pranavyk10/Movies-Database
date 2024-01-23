@@ -1,0 +1,124 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Movies Now Playing</h1>
+    <style>
+        /* Custom CSS to make carousel control buttons continuously opaque */
+        .carousel-control-prev, .carousel-control-next {
+            margin-top: 15rem;
+            width: 3rem;
+            height: 8rem;
+            background-color: rgba(0, 0, 0, 1); /* Adjust the alpha (opacity) value as needed */
+        }
+        .carousel-control-prev-icon, .carousel-control-next-icon {
+            background-color: rgba(0, 0, 0, 1); /* Adjust the alpha (opacity) value as needed */
+        }
+    </style>
+    <div id="movieCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for movie in all_movies %}
+            {% if loop.index0 % 3 == 0 %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+            <div class="row">
+            {% endif %}
+            <div class="col-md-4 mb-4">
+                <a class="card-contents" href="#">
+                    <div class="card">
+                        <img src="{{ movie.poster }}" class="card-img-top" alt="{{ movie.title }}">
+                    </div>
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text">{{ movie.overview }}</p>
+                    <p class="card-text">Release Year: {{ movie.year }}</p>
+                </div>
+            </div>
+            {% if loop.index % 3 == 0 or loop.last %}
+            </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <h1>Popular Movies</h1>
+    <div id="popularMoviesCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for movie in popular_movies %}
+            {% if loop.index0 % 3 == 0 %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+            <div class="row">
+            {% endif %}
+            <div class="col-md-4 mb-4">
+                <a class="card-contents" href="#">
+                    <div class="card">
+                        <img src="{{ movie.poster }}" class="card-img-top" alt="{{ movie.title }}">
+                    </div>
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text">{{ movie.overview }}</p>
+                    <p class="card-text">Release Year: {{ movie.year }}</p>
+                </div>
+            </div>
+            {% if loop.index % 3 == 0 or loop.last %}
+            </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#popularMoviesCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#popularMoviesCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <h1>Upcoming Movies</h1>
+    <div id="upcomingMoviesCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            {% for movie in upcoming_movies %}
+            {% if loop.index0 % 3 == 0 %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+            <div class="row">
+            {% endif %}
+            <div class="col-md-4 mb-4">
+                <a class="card-contents" href="#">
+                    <div class="card">
+                        <img src="{{ movie.poster }}" class="card-img-top" alt="{{ movie.title }}">
+                    </div>
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text">{{ movie.overview }}</p>
+                </div>
+            </div>
+            {% if loop.index % 3 == 0 or loop.last %}
+            </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#upcomingMoviesCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#upcomingMoviesCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+
+{% endblock %}

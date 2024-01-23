@@ -1,0 +1,84 @@
+/* NAVBAR */
+nav{
+    background-color: #000000;
+}
+
+footer{
+    padding-top: 3rem;
+    background-color: #000000;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+.navbar-brand{
+    color: #FFFFFF;
+    padding-left: 1rem;
+    font-size: 2rem;
+    font-weight: bolder
+}
+
+.nav-item{
+    padding-right: 1rem;
+    font-weight: bold;
+}
+
+.search-menu{
+    padding-top: 1.2rem;
+    padding-left: 25rem;
+}
+
+.search-button {
+    background-color: #000000;
+    color: #FFFFFF;
+    margin-left: 1rem;
+    height: 3rem;
+}
+.text-search{
+    outline: none;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.search-input{
+    height: 3rem;
+}
+
+/* ADD HTML */
+.filters{
+    align-items: center;
+    margin-right: 10rem ;
+    margin-bottom: 15rem;
+}
+
+.filters-text{
+    padding-top: 2rem;
+    padding-left: 25rem;
+    padding-bottom: 2rem;
+}
+
+.or-text{
+    padding: 2rem;
+    text-align: center;
+}
+
+#genresDropdown {
+    margin-left: 25rem;
+    background-color: #000000;
+    
+}
+
+#yearsDropdown{
+    margin-left: 10rem;
+    background-color: #000000;
+}
+
+#reviewsDropdown{
+    margin-right: 4rem;
+    background-color: #000000;
+}
+
+/* FOOTER */
+.footer-link{
+    text-decoration: none;
+}
+
+/* INDEX HTML */

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        {% for movie in movies %}
+        <div class="col-md-4 mb-4">
+            <a href="{{ url_for('movie_details') }}">
+                <div class="card">
+                    <img src="{{ movie.poster if movie.poster else 'https://image.tmdb.org/t/p/w400' ~ movie.poster_path }}" class="card-img-top" alt="{{ movie.title }}">
+            </a>
+                <div class="card-body">
+                    <h5 class="card-title">{{ movie.title }}</h5>
+                    <p class="card-text">{{ movie.overview }}</p>
+                    <p class="card-text">Release Year: {{ movie.year }}</p>
+                </div>
+        </div>
+            
+        </div>
+        {% if loop.index % 3 == 0 %}
+        </div>
+        <div class="row">
+        {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
